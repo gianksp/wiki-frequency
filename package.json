@@ -1,12 +1,18 @@
 {
-  "name": "openshift-cartridge-nodejs-template",
-  "version": "1.0.1",
-  "description": "Custom Node.js cartridge for OpenShift - sample application",
+  "name": "wiki-frequency-workday",
+  "version": "1.0.0",
+  "description": "Wikipedia Word Frequency analyser",
   "private": true,
-  "main": "start.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node --use_strict start.js"
+    "start": "node server/server.js"
   },
-  "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
-  "license": "ISC"
+  "author": "Giancarlo Sanchez <gianksp@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "path": "^0.12.7",
+    "requestify": "^0.1.17",
+    "underscore": "^1.8.3"
+  }
 }

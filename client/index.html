@@ -1,0 +1,56 @@
+<html lang="en" ng-app="WikiFrequency">
+  <head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="initial-scale=1" />
+  </head>
+  <body layout="column" ng-controller="AppCtrl">
+    <md-toolbar layout="row" class="workday">
+      <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <h1 class="md-toolbar-tools" layout-align-gt-sm="center"><img class="logo" src="http://www.workday.com/Images/shared/workday-logo.png"></img>Wiki Word Analyser</h1>
+    </md-toolbar>
+    <div layout="row" flex>
+        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+          <md-subheader class="md-primary">Unread Messages</md-subheader>
+
+      <md-list layout-padding>
+
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Wikipedia Page ID</label>
+            <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+            <input ng-model="defaultId" type="text">
+          </md-input-container>
+          
+        <md-list-item class="md-3-line" ng-repeat="word in ocurrences">
+            <div class="md-list-item-text">
+              <h3>{{word.total}} Matches</h3>
+              <div ng-repeat="w in word.words"><ng-md-icon icon="bookmark" style="fill:{{wordMap[w]}}"></ng-md-icon>  {{w}}</div>
+            <!--   <p>
+                {{message.notes}}
+              </p> -->
+            </div>
+        </md-list-item>
+      </md-list>
+        </md-sidenav>
+        <div layout="column" flex id="content">
+            <md-content layout="column" flex class="md-padding">
+              <h2 ng-bind-html="title "></h2>
+              <p ng-bind-html="text | highlight:matches:wordMap"></p>
+            </md-content>
+        </div>
+    </div>
+
+  </body>
+</html>

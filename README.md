@@ -23,6 +23,7 @@ Program to fetch a Wikipedia page and report the top n words on that page. Inclu
  * You must have Node.js installed
  * Download or clone this source
  * In the root folder run npm install for dependencies
+ * Install mocha for testing npm install -g mocha
  * Run the project with node server/server.js
  * visit http://localhost:8080
 
@@ -45,7 +46,8 @@ This project provides a rather simple API, the endpoint which would be localhost
 
 ## Tests
 
-Tests are run with Mocha.js
+ * Tests are run with Mocha.js
+ * mocha server/tests/server.js
 
 ## Technologies Used:
 

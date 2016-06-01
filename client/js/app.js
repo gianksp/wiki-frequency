@@ -9,9 +9,6 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
   $scope.defaultId = "21721040";
   $scope.n         = 5;
 
-  //Color map for highlights
-  $scope.wordMap = {};
-
   /**
    * Query for a page in wikipedia with limit
    * @return     {[type]}                 [description]
@@ -21,6 +18,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
       if (response.data.success) {
         $scope.text       = $sce.trustAsHtml(response.data.extract);
         $scope.title      = $sce.trustAsHtml(response.data.title);
+        $scope.url        = response.data.url;
         $scope.ocurrences = response.data.ocurrences;
         mapColors(response.data.ocurrences);
       } else {
@@ -37,15 +35,13 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
    * @return     {[type]}                 [description]
    */
   function mapColors(ocurrences) {
+    $scope.wordMap = {};
     _.each(ocurrences,function(item){
       _.each(item.words,function(word){
         $scope.wordMap[word] = "#"+((1<<24)*Math.random()|10).toString(16);
       });
     });
-    console.log(ocurrences);
-    console.log($scope.wordMap);
     $scope.matches = Object.keys($scope.wordMap);
-    console.log($scope.matches);
   }
 
   //Init
@@ -69,10 +65,8 @@ app.filter('highlight', function($sce) {
       });
 
       _.each(Object.keys(wordMap), function(word) {
-         var regex = new RegExp(word, 'gi');
-         console.log(word);
-         console.log(regex);
-         src=src.replace(regex, '<span style="background:'+wordMap[word]+'">$&</span>')
+         var regex = new RegExp('\\b'+word+'\\b', 'gi');
+         src=src.replace(regex, '<span style="background:'+wordMap[word]+'">$&</span>');
       });
       // Regex to simultaneously replace terms
       // var regex = new RegExp('(' + matches.join('|') + ')', 'g');

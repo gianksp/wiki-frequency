@@ -36,7 +36,7 @@ app.get('/analyse', function(req, res) {
   //Get data and analyse, we will be building a response object that includes the wikipedia data plus the desired analysis
   getWikipediaPage(page_id,function(response) {
     var ocurrences = analyseOcurrences(response.query.pages[page_id],n);
-    res.json({success:true, id:page_id, title:response.query.pages[page_id].title, extract:response.query.pages[page_id].extract, ocurrences:ocurrences });
+    res.json({success:true, id:page_id, url:response.url, title:response.query.pages[page_id].title, extract:response.query.pages[page_id].extract, ocurrences:ocurrences });
   });
 
 });
@@ -51,8 +51,11 @@ app.get('/analyse', function(req, res) {
  * @return     {[type]}                 promise
  */
 function getWikipediaPage(page_id,callback) {
-    return requestify.get("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&pageids="+page_id+"&explaintext&format=json").then(function(response) {
-        callback(response.getBody());
+    var url = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&pageids="+page_id+"&explaintext&format=json";
+    return requestify.get(url).then(function(response) {
+        var res = response.getBody();
+        res.url = url;
+        callback(res);
     });
 }
 

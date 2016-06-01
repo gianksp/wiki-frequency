@@ -49,6 +49,10 @@ This project provides a rather simple API, the endpoint which would be localhost
  * Tests are run with Mocha.js
  * mocha server/tests/server.js
 
+## Note
+
+ * In the excercise example for page id 21721040 it says that the word stack appears 21 times when we can visually appreciate using the UI of this tool that in reality it appears 22. The same for other words that appear in the output of the example, don't match this tool's output. Since I can visually identify the matches using the UI tool I don't have an alternative but to believe the is another condition I'm not taking into consideration when doing regex eval or, the example output is wrong. In any case I can't speculate due the fact that the excercise definition is way too short to know. Feedback would be appreciated in this case and I'll gladly modify it in case it is a bug on my side.
+ 
 ## Technologies Used:
 
  * [Node.js](https://nodejs.org/en) for server side

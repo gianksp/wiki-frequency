@@ -28,6 +28,12 @@ Program to fetch a Wikipedia page and report the top n words on that page. Inclu
 
 ###There is also a [cloud version](http://wiki-freq.rhcloud.com)
 
+## Text analysis highlight
+
+Words are grouped by ocurrence, analysed in a case insensitive way and highlighted using colors that match specific words.
+
+![Highlight](http://s33.postimg.org/gfm45aejz/highlight.png)
+
 ## API Reference
 
 This project provides a rather simple API, the endpoint which would be localhost or [cloud version](http://wiki-freq.rhcloud.com). 

@@ -1,6 +1,6 @@
 # (Wikipedia Word Counter) Workday Sample Excercise
 
-[![Word analyser](https://youtu.be/jaFFzFgULo0/0.jpg)](https://youtu.be/jaFFzFgULo0)
+[![Alt text for your video](http://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
 
 Prerrequisites and Installation:
 

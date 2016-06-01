@@ -1,8 +1,20 @@
 # (Wikipedia Word Counter) Workday Sample Excercise
 
-[![Alt text for your video](http://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
+[![Alt text for your video](https://i.ytimg.com/vi/jaFFzFgULo0/hqdefault.jpg)](https://www.youtube.com/watch?v=jaFFzFgULo0)
 
-Prerrequisites and Installation:
+###Word Frequency
+
+Program to fetch a Wikipedia page and report the top n words on that page. Includes both a visual Interface and a simple API
+
+###Considerations
+
+*The parameters to the program API are 'page_id' and 'n'.
+*This returns a JSON object containing word ocurrences and text data analysis.
+*When two or more words have the same frequency include them all on the same line separated by a comma in the UI.
+*A word is defined as a sequence of at least four alphabetic characters.
+*Included unit tests and a README describing how to compile and run.
+
+###Prerrequisites and Installation:
 
  * You must have Node.js installed
  * Download or clone this source
@@ -10,7 +22,7 @@ Prerrequisites and Installation:
  * Run the project with node server/server.js
  * visit http://localhost:8080
 
-There is also a [cloud version](http://wiki-freq.rhcloud.com)
+###There is also a [cloud version](http://wiki-freq.rhcloud.com)
 
 ## API Reference
 

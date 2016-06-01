@@ -14,5 +14,10 @@
     "path": "^0.12.7",
     "requestify": "^0.1.17",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3",
+    "should": "^9.0.0",
+    "supertest": "^1.2.0"
   }
 }

@@ -35,6 +35,8 @@ This project provides a rather simple API, the endpoint which would be localhost
 - Input params : page_id (Wikipedia Page ID), n (Number of top finds, optional defaulted to 5)
 - output : a json containing the word ocurrence analysis and the original text analysed.
 
+![API](http://s33.postimg.org/4nikw87jj/ap2.png)
+
 ## Tests
 
 Tests are run with Mocha.js

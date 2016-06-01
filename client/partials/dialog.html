@@ -1,0 +1,17 @@
+<md-dialog aria-label="List dialog">
+  <md-dialog-content>
+    
+    <h2>Request URL</h2>
+    <h3 style="opacity:0.7;">{{endpoint}}</h3>
+    <h4>Service: <span style="opacity:0.6;">analyse</span></h4>
+    <h4>Params: <span style="opacity:0.6;">page_id (Wikipedia Page identifier - string), n (Total number of max hits to find - int)</span></h4>
+    <h2>Response</h2>
+    <pre>
+      {{ response | json}}
+    </pre>
+
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="hide()" class="md-primary">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

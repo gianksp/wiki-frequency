@@ -1,6 +1,6 @@
 var app = angular.module('WikiFrequency', ['ngMaterial','ngMdIcons']);
 
-app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($scope, $mdSidenav, $http, $sce){
+app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', '$mdDialog', '$mdMedia', function($scope, $mdSidenav, $http, $sce, $mdDialog, $mdMedia){
   $scope.toggleSidenav = function(menuId) {
     $mdSidenav(menuId).toggle();
   };
@@ -16,6 +16,7 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
   $scope.query = function(){
     $http.get('/analyse?page_id='+$scope.defaultId+'&n='+$scope.n).then(function(response) {
       if (response.data.success) {
+        $scope.response   = response.data;
         $scope.text       = $sce.trustAsHtml(response.data.extract);
         $scope.title      = $sce.trustAsHtml(response.data.title);
         $scope.url        = response.data.url;
@@ -26,6 +27,22 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
       }
     }, function(error) {
       console.log(error);
+    });
+  }
+
+  /**
+   * Display a dialog with the rest call
+   * @return     {[type]}                 [description]
+   */
+  $scope.showCall = function(ev) {
+    $mdDialog.show({
+      scope:$scope,
+      controller: 'DialogCtrl',
+      templateUrl: 'partials/dialog.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: false
     });
   }
 
@@ -46,6 +63,28 @@ app.controller('AppCtrl', ['$scope', '$mdSidenav', '$http', '$sce', function($sc
 
   //Init
   $scope.query();
+
+}]);
+
+/**
+ * Dialog with the details about the rest call
+ * @param      {[type]}                 $scope      [description]
+ * @param      {[type]}                 $mdDialog   [description]
+ * @param      {[type]}                 $mdMedia){               }] [description]
+ * @return     {[type]}                             [description]
+ */
+app.controller('DialogCtrl', ['$scope','$mdDialog', '$mdMedia', function($scope, $mdDialog, $mdMedia){
+
+  //URL for our test search service
+  $scope.endpoint = location.href+'analyse?page_id='+$scope.defaultId+'&n='+$scope.n;
+
+  /**
+   * Close the dialog
+   * @return     {[type]}                 [description]
+   */
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
 
 }]);
 

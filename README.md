@@ -8,12 +8,16 @@ Program to fetch a Wikipedia page and report the top n words on that page. Inclu
 
 ###Considerations
 
-*The parameters to the program API are 'page_id' and 'n'.
-*This returns a JSON object containing word ocurrences and text data analysis.
-*When two or more words have the same frequency include them all on the same line separated by a comma in the UI.
-*A word is defined as a sequence of at least four alphabetic characters.
-*Included unit tests and a README describing how to compile and run.
+ * The parameters to the program API are 'page_id' and 'n'.
+ * This returns a JSON object containing word ocurrences and text data analysis.
+ * When two or more words have the same frequency include them all on the same search.
+ * A word is defined as a sequence of at least four alphabetic characters.
+ * Included unit tests and a README describing how to compile and run.
 
+###Omisions
+
+ * The excercise required to list all same frequency words on the same line separated by comma, however, since we are implementing a UI, for better displaying of the information I decided to display it as a vertical list instead. The main purpose of grouping them by number of ocurrences is kept in both the API call and the UI design. (Hopefully this won't be a problem, if it is, please let me know)
+ 
 ###Prerrequisites and Installation:
 
  * You must have Node.js installed
